@@ -1,0 +1,55 @@
+### Question #4: Checking for Uniqueness
+
+Write an algorithm that determines whether all the elements in a string are unique. You may not convert the string into an array or use array methods to solve this problem. The algorithm should return a boolean.
+
+#### Example
+
+**Input**: "hello"
+
+**Output**: `false`
+
+**Input**: "copyright"
+
+**Output**: `true`
+
+
+//This one was my whiteboard prompt!
+//Checking for Uniqueness
+determines whether all elements are unique
+returns boolean
+cannot use array or array methods
+
+input: "hello"
+output: return: false
+
+"copyright"
+return: true
+
+clarification:
+expect only strings as input
+can use JS
+can use string methods
+" u " should return: false
+//String.prototype.trim();
+"right"
+
+function checkUnique(inputString) {
+	const stringLength = string.length; // 5
+	for (let i = 0; i < string.length; i++) {
+		let checkChar = inputString.charAt(i); //"r" "i"
+		let sliceString = inputString;
+		sliceString = sliceString.slice(i+1) //"ight" "ght"
+		for (let j = 0; j < sliceString.length; j++) {
+			if (checkChar === sliceString.charAt(j)) {
+				return false;
+			}
+		}
+	}
+	return true;
+}
+
+//if (inputString.isString()) {
+//	const inputUnique = checkUnique(inputString);
+//}
+//...
+//...

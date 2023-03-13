@@ -1,0 +1,57 @@
+Question #1: Turning Strings to URLs
+
+URLs cannot have spaces. Instead, all spaces in a string are replaced with `%20`. Write an algorithm that replaces all spaces in a string with `%20`.
+
+You may not use the `replace()` method or regular expressions to solve this problem. Solve the problem with and without recursion.
+
+Example
+
+Input: "Jasmine Ann Jones"
+
+Output: "Jasmine%20Ann%20Jones"
+
+w/o recursion:
+
+function makeUrl(inputStr) {
+	const newStringArr = inputStr.split(' ');
+	let newString = '';
+	for (let i = 0; i < newStringArr.length-1; i++) {
+		if (i === newStringArr.length-2) {
+		  newString += newStringArr[i];
+		}
+    else {
+      newString += newStringArr[i] + '%20';
+    }
+	}
+}
+
+with recursion:
+
+function makeUrl(inputStr) { //calls on 'hello world' then 'ello world' then 'llo world' etc down to ' world'
+  let newString = '';
+  if (inputStr = '') {
+    return;
+  }
+  else if (inputStr.charAt(0) === ' ')
+  {
+    return ('%20' + inputStr.slice(1));
+  }
+  else //first call on 'hello world' calls makeUrl on one less letter starting from the front so 'ello world'
+  {
+    return makeUrl(inputStr.slice(1));
+  }
+}
+
+function makeUrl(inputStr) {
+  if (inputStr = '') {
+    return;
+  }
+  else if (inputStr.charAt(0) === ' ')
+  {
+    return ('%20' + inputStr.slice(1));
+  }
+  else
+  {
+    return makeUrl(inputStr.slice(1));
+  }
+}
